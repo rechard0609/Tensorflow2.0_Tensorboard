@@ -18,3 +18,18 @@ keras 2.4.3
 Python 3.8.3
 
 #.tensorboard
+
+setting
+...
+logdir = "/Users/richardchung/PycharmProjects/keras_talk/logs/scalars/" + datetime.now().strftime("%Y%m%d-%H%M%S")
+tensorboard_callback = keras.callbacks.TensorBoard(log_dir=logdir)
+...
+training_history = model.fit(
+    x_train, # input
+    y_train, # output
+    batch_size=train_size,
+    verbose=0, # Suppress chatty output; use Tensorboard instead
+    epochs=100,
+    validation_data=(x_test, y_test),
+    callbacks=[tensorboard_callback],
+)
